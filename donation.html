@@ -31,7 +31,7 @@
     .qr-code {
       width: 200px;
       margin: 20px auto;
-      display: block;
+      display: none; /* Hidden by default */
     }
 
     table.bank-table {
@@ -99,15 +99,11 @@
     <table class="bank-table">
       <tr>
         <td><strong>Bank Name</strong></td>
-        <td>
-          <span id="bankName">SBI Bank</span>
-        </td>
+        <td><span id="bankName">SBI Bank</span></td>
       </tr>
       <tr>
         <td><strong>Account Name</strong></td>
-        <td>
-          <span id="accountName">Noor Education Society</span>
-        </td>
+        <td><span id="accountName">NOOR EDUCATION SOCIETY<br> DARUL ULOOM NOORUL ISLAM</span></td>
       </tr>
       <tr>
         <td><strong>Account Number</strong></td>
@@ -125,20 +121,15 @@
       </tr>
       <tr>
         <td><strong>Branch</strong></td>
-        <td>
-          <span id="branch">SBI Old Bowenpallay, Secunderabad</span>
-          <button class="copy-btn" onclick="copyText('branch')">Copy</button>
-        </td>
+        <td><span id="branch">SBI Old Bowenpallay, Secunderabad</span></td>
       </tr>
     </table>
 
     <h3>Scan & Pay via UPI</h3>
-    <img src="qr.png" alt="UPI QR Code" class="qr-code" />
+    <img src="qr.png" alt="UPI QR Code" class="qr-code" id="qrCode" />
 
     <!-- ✅ Donate Button -->
-    <a href="upi://pay?pa=amjadsyed824@okhdfcbank&pn=Darul Uloom Noorul Islam&cu=INR">
-      <button class="donate-btn">Donate Now</button>
-    </a>
+    <button class="donate-btn" onclick="handleDonate()">Donate Now</button>
   </section>
 
   <!-- Footer -->
@@ -147,13 +138,31 @@
     <p>© 2025 darululoomnoorulislam.in – All rights reserved</p>
   </footer>
 
-  <!-- ✅ Copy Function Script -->
+  <!-- ✅ Scripts -->
   <script>
     function copyText(id) {
       const text = document.getElementById(id).innerText;
       navigator.clipboard.writeText(text).then(() => {
         alert(`Copied: ${text}`);
       });
+    }
+
+    function isMobileDevice() {
+      return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    }
+
+    function handleDonate() {
+      const upiLink = "upi://pay?pa=amjadsyed824@okhdfcbank&pn=Darul%20Uloom%20Noorul%20Islam&cu=INR";
+
+      if (isMobileDevice()) {
+        window.location.href = upiLink;
+      } else {
+        document.getElementById("qrCode").style.display = "block";
+        window.scrollTo({
+          top: document.getElementById("qrCode").offsetTop - 100,
+          behavior: 'smooth'
+        });
+      }
     }
   </script>
 
