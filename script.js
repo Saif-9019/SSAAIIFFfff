@@ -2,9 +2,11 @@ document.getElementById("donation-form").addEventListener("submit", function (e)
   e.preventDefault();
 
   const name = document.getElementById("name").value;
-  const amount = document.getElementById("amount").value;
-  const upiLink = `upi://pay?pa=amjadsyed824@okhdfcbank&pn=Darul Uloom Noorul Islam&am=${amount}&cu=INR`;
+  // const amount = document.getElementById("amount").value; // ab amount ki zarurat nahi
+  const upiLink = `upi://pay?pa=amjadsyed824@okhdfcbank&pn=Darul Uloom Noorul Islam&cu=INR`;
 
-  alert("Thank you " + name + "! Redirecting to UPI App...");
+  alert("Thank you " + name + "! Redirecting to UPI...");
+
+  // Redirect to UPI link
   window.location.href = upiLink;
 });
