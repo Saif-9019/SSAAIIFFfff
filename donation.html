@@ -5,17 +5,56 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Online Donation | Your Website</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .donate-btn {
+      padding: 12px 25px;
+      background-color: #16a34a;
+      color: white;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .donate-btn:hover {
+      background-color: #15803d;
+    }
+
+    .donation-section {
+      padding: 40px;
+      max-width: 600px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .qr-code {
+      width: 200px;
+      margin: 20px auto;
+      display: block;
+    }
+
+    table.bank-table {
+      margin: 20px auto;
+      text-align: left;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    .bank-table td {
+      padding: 8px;
+      border-bottom: 1px solid #ddd;
+    }
+  </style>
 </head>
 
 <body>
 
   <!-- Header -->
   <header class="site-header">
-    <div class="top-bar">
-    </div>
+    <div class="top-bar"></div>
     <div class="main-nav">
       <img src="logo.png" alt="logo" class="logo" />
-
       <nav>
         <ul>
           <li><a href="index.html">Home</a></li>
@@ -38,104 +77,22 @@
   <section class="donation-section">
     <h2>Bank Account Details</h2>
     <table class="bank-table">
-      <tr>
-        <td><strong>Bank Name</strong></td>
-        <td>SBI Bank</td>
-      </tr>
-      <tr>
-        <td><strong>Account Name</strong></td>
-        <td>Noor Education Society</td>
-      </tr>
-      <tr>
-        <td><strong>Account Number</strong></td>
-        <td>62129695597</td>
-      </tr>
-      <tr>
-        <td><strong>IFSC Code</strong></td>
-        <td>SBIN0020812</td>
-      </tr>
-      <tr>
-        <td><strong>Branch</strong></td>
-        <td>SBI Old Bowenpallay,Secunderabad</td>
-      </tr>
+      <tr><td><strong>Bank Name</strong></td><td>SBI Bank</td></tr>
+      <tr><td><strong>Account Name</strong></td><td>Noor Education Society</td></tr>
+      <tr><td><strong>Account Number</strong></td><td>62129695597</td></tr>
+      <tr><td><strong>IFSC Code</strong></td><td>SBIN0020812</td></tr>
+      <tr><td><strong>Branch</strong></td><td>SBI Old Bowenpallay, Secunderabad</td></tr>
     </table>
 
     <h3>Scan & Pay via UPI</h3>
     <img src="qr.png" alt="UPI QR Code" class="qr-code" />
+
+    <!-- ✅ Donate Button -->
+    <a href="upi://pay?pa=amjadsyed824@okhdfcbank&pn=Darul Uloom Noorul Islam&am=100&cu=INR">
+      <button class="donate-btn">Donate Now</button>
+    </a>
   </section>
-<!-- Donation Form -->
-<section class="donation-form">
-  <h2>Make a Donation</h2>
-  <form id="donation-form" method="post">
-    <label for="name">Full Name</label>
-    <input type="text" id="name" name="name" placeholder="Your name" required>
 
-    <label for="email">Email</label>
-    <input type="email" id="email" name="email" placeholder="Your email">
-
-    <label for="mobile">Mobile</label>
-    <input type="tel" id="mobile" name="mobile" placeholder="Your mobile number">
-
-    <label for="amount">Donation Amount (₹)</label>
-    <input type="number" id="amount" name="amount" placeholder="Amount" required>
-
-    <label for="type">Donation Type</label>
-    <select id="type" name="type" required>
-      <option value="">Select Type</option>
-      <option value="General">General Donation</option>
-      <option value="Zakat">Zakat</option>
-      <option value="Fitra">Fitra</option>
-      <option value="Sadqa">Sadqa</option>
-    </select>
-
-    <button type="submit" class="donate-btn">Donate Now</button>
-  </form>
-</section>
-
-<script>
-  document.getElementById("donation-form").addEventListener("submit", async function (e) {
-    e.preventDefault();
-
-    const form = e.target;
-    const name = form.name.value;
-    const email = form.email.value;
-    const mobile = form.mobile.value;
-    const amount = form.amount.value;
-    const type = form.type.value;
-
-    const data = {
-      name,
-      email,
-      mobile,
-      amount,
-      type
-    };
-
-    try {
-      const response = await fetch("https://script.google.com/macros/s/AKfycbxf2q3fenXQXF-RdCpp3R5WBmeofeIgsyKyyztZsBWyss_5ol8RUsT4fMNDW5TNNFL23Q/exec", {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json"
-        }
-      });
-
-      if (response.ok) {
-        alert(`Shukriya ${name}! Form submit ho gaya. UPI payment page open ho raha hai...`);
-
-        // Open UPI payment link
-        const upiLink = `upi://pay?pa=amjadsyed824@okhdfcbank&pn=Darul Uloom Noorul Islam&am=${amount}&cu=INR`;
-        window.location.href = upiLink;
-
-      } else {
-        alert("Form submit karne me error aaya. Phir se try karo.");
-      }
-    } catch (error) {
-      console.error("Error:", error);
-      alert("Network error. Please try again later.");
-    }
-  });
-</script>
   <!-- Footer -->
   <footer>
     <p>Email: darululoomnoorulislam@gmail.com | Phone: +91-9849506791</p>
