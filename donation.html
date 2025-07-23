@@ -45,6 +45,26 @@
       padding: 8px;
       border-bottom: 1px solid #ddd;
     }
+
+    .copy-btn {
+      margin-left: 10px;
+      padding: 4px 10px;
+      font-size: 12px;
+      cursor: pointer;
+      background-color: #e5e7eb;
+      border: none;
+      border-radius: 4px;
+    }
+
+    .copy-btn:hover {
+      background-color: #d1d5db;
+    }
+
+    .copied {
+      color: green;
+      font-size: 12px;
+      margin-left: 10px;
+    }
   </style>
 </head>
 
@@ -77,11 +97,39 @@
   <section class="donation-section">
     <h2>Bank Account Details</h2>
     <table class="bank-table">
-      <tr><td><strong>Bank Name</strong></td><td>SBI Bank</td></tr>
-      <tr><td><strong>Account Name</strong></td><td>Noor Education Society</td></tr>
-      <tr><td><strong>Account Number</strong></td><td>62129695597</td></tr>
-      <tr><td><strong>IFSC Code</strong></td><td>SBIN0020812</td></tr>
-      <tr><td><strong>Branch</strong></td><td>SBI Old Bowenpallay, Secunderabad</td></tr>
+      <tr>
+        <td><strong>Bank Name</strong></td>
+        <td>
+          <span id="bankName">SBI Bank</span>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Account Name</strong></td>
+        <td>
+          <span id="accountName">Noor Education Society</span>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Account Number</strong></td>
+        <td>
+          <span id="accountNumber">62129695597</span>
+          <button class="copy-btn" onclick="copyText('accountNumber')">Copy</button>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>IFSC Code</strong></td>
+        <td>
+          <span id="ifsc">SBIN0020812</span>
+          <button class="copy-btn" onclick="copyText('ifsc')">Copy</button>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Branch</strong></td>
+        <td>
+          <span id="branch">SBI Old Bowenpallay, Secunderabad</span>
+          <button class="copy-btn" onclick="copyText('branch')">Copy</button>
+        </td>
+      </tr>
     </table>
 
     <h3>Scan & Pay via UPI</h3>
@@ -98,6 +146,16 @@
     <p>Email: darululoomnoorulislam@gmail.com | Phone: +91-9849506791</p>
     <p>© 2025 darululoomnoorulislam.in – All rights reserved</p>
   </footer>
+
+  <!-- ✅ Copy Function Script -->
+  <script>
+    function copyText(id) {
+      const text = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        alert(`Copied: ${text}`);
+      });
+    }
+  </script>
 
 </body>
 </html>
