@@ -66,7 +66,7 @@
 <!-- Donation Form -->
 <section class="donation-form">
   <h2>Make a Donation</h2>
-  <form action="#" method="post">
+  <form id="donation-form" method="post">
     <label for="name">Full Name</label>
     <input type="text" id="name" name="name" placeholder="Your name" required>
 
@@ -91,17 +91,24 @@
     <button type="submit" class="donate-btn">Donate Now</button>
   </form>
 </section>
+
 <script>
-  document.querySelector("form").addEventListener("submit", async function(e) {
+  document.getElementById("donation-form").addEventListener("submit", async function (e) {
     e.preventDefault();
 
     const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const mobile = form.mobile.value;
+    const amount = form.amount.value;
+    const type = form.type.value;
+
     const data = {
-      name: form.name.value,
-      email: form.email.value,
-      mobile: form.mobile.value,
-      amount: form.amount.value,
-      type: form.type.value
+      name,
+      email,
+      mobile,
+      amount,
+      type
     };
 
     try {
@@ -114,19 +121,21 @@
       });
 
       if (response.ok) {
-        alert("Shukriya! Aapka donation form submit ho gaya.");
-        // Redirect to UPI Payment
-        window.location.href = `upi://pay?pa=amjadsyed824@okhdfcbank=Darul Uloom&am=${data.amount}&cu=INR`;
+        alert(`Shukriya ${name}! Form submit ho gaya. UPI payment page open ho raha hai...`);
+
+        // Open UPI payment link
+        const upiLink = `upi://pay?pa=amjadsyed824@okhdfcbank&pn=Darul Uloom Noorul Islam&am=${amount}&cu=INR`;
+        window.location.href = upiLink;
+
       } else {
-        alert("Error submitting form. Try again.");
+        alert("Form submit karne me error aaya. Phir se try karo.");
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("Network error. Please try later.");
+      alert("Network error. Please try again later.");
     }
   });
 </script>
-
   <!-- Footer -->
   <footer>
     <p>Email: darululoomnoorulislam@gmail.com | Phone: +91-9849506791</p>

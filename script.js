@@ -3,7 +3,7 @@ document.getElementById("donation-form").addEventListener("submit", function (e)
 
   const name = document.getElementById("name").value;
   const amount = document.getElementById("amount").value;
-  const upiLink = `upi://pay?pa=syedmohammedsaifenadeem-1@oksbi&pn=Darul Uloom Noorul Islam&am=${amount}&cu=INR`;
+  const upiLink = `upi://pay?pa=amjadsyed824@okhdfcbank=Darul Uloom Noorul Islam&am=${amount}&cu=INR`;
 
   alert("Thank you " + name + "! Redirecting to UPI...");
 
