@@ -12,11 +12,6 @@
   <!-- Header -->
   <header class="site-header">
     <div class="top-bar">
-      <div class="lang-switch">
-        <a href="index.html">English</a> |
-        <a href="index-ur.html">اردو</a> |
-        <a href="index-hi.html">हिंदी</a>
-      </div>
     </div>
     <div class="main-nav">
       <img src="logo.png" alt="logo" class="logo" />
@@ -25,7 +20,6 @@
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="donation.html" class="active">Donation</a></li>
-          <li><a href="fatwa.html">Fatwa</a></li>
           <li><a href="news.html">News</a></li>
           <li><a href="admission.html">Admission</a></li>
           <li><a href="contact.html">Contact</a></li>
@@ -46,23 +40,23 @@
     <table class="bank-table">
       <tr>
         <td><strong>Bank Name</strong></td>
-        <td>XYZ Bank</td>
+        <td>SBI Bank</td>
       </tr>
       <tr>
         <td><strong>Account Name</strong></td>
-        <td>Your Madarsa Trust</td>
+        <td>Noor Education Society</td>
       </tr>
       <tr>
         <td><strong>Account Number</strong></td>
-        <td>123456789012</td>
+        <td>62129695597</td>
       </tr>
       <tr>
         <td><strong>IFSC Code</strong></td>
-        <td>XYZB0000123</td>
+        <td>SBIN0020812</td>
       </tr>
       <tr>
         <td><strong>Branch</strong></td>
-        <td>Your City Branch</td>
+        <td>SBI Old Bowenpallay,Secunderabad</td>
       </tr>
     </table>
 
@@ -97,7 +91,6 @@
     <button type="submit" class="donate-btn">Donate Now</button>
   </form>
 </section>
-
 <script>
   document.querySelector("form").addEventListener("submit", async function(e) {
     e.preventDefault();
@@ -112,7 +105,7 @@
     };
 
     try {
-      const response = await fetch("YOUR_SCRIPT_URL_HERE", {
+      const response = await fetch("https://script.google.com/macros/s/AKfycbxf2q3fenXQXF-RdCpp3R5WBmeofeIgsyKyyztZsBWyss_5ol8RUsT4fMNDW5TNNFL23Q/exec", {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
@@ -123,7 +116,7 @@
       if (response.ok) {
         alert("Shukriya! Aapka donation form submit ho gaya.");
         // Redirect to UPI Payment
-        window.location.href = `upi://pay?pa=yourupiid@upi&pn=Darul Uloom&am=${data.amount}&cu=INR`;
+        window.location.href = `upi://pay?pa=amjadsyed824@okhdfcbank=Darul Uloom&am=${data.amount}&cu=INR`;
       } else {
         alert("Error submitting form. Try again.");
       }
@@ -136,8 +129,8 @@
 
   <!-- Footer -->
   <footer>
-    <p>Email: info@yourdomain.com | Phone: +91-XXXX-XXXXXX</p>
-    <p>© 2025 Your Website Name – All rights reserved</p>
+    <p>Email: darululoomnoorulislam@gmail.com | Phone: +91-9849506791</p>
+    <p>© 2025 darululoomnoorulislam.in – All rights reserved</p>
   </footer>
 
 </body>
