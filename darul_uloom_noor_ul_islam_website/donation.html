@@ -1,0 +1,194 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Online Donation | Your Website</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .donate-btn {
+      padding: 12px 25px;
+      background-color: #16a34a;
+      color: white;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .donate-btn:hover {
+      background-color: #15803d;
+    }
+
+    .donation-section {
+      padding: 40px;
+      max-width: 600px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .qr-code {
+      width: 200px;
+      margin: 20px auto;
+      display: none; /* Hidden by default */
+    }
+
+    table.bank-table {
+      margin: 20px auto;
+      text-align: left;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    .bank-table td {
+      padding: 8px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .copy-btn {
+      margin-left: 10px;
+      padding: 4px 10px;
+      font-size: 12px;
+      cursor: pointer;
+      background-color: #e5e7eb;
+      border: none;
+      border-radius: 4px;
+    }
+
+    .copy-btn:hover {
+      background-color: #d1d5db;
+    }
+
+    .copied {
+      color: green;
+      font-size: 12px;
+      margin-left: 10px;
+    }
+
+    /* 🔥 New Styles for Payment Icons */
+    .payment-icons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+      margin-bottom: 15px;
+      flex-wrap: wrap;
+    }
+
+    .upi-icon {
+      width: 60px;
+      height: auto;
+      transition: transform 0.2s ease;
+    }
+
+    .upi-icon:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+  <header>
+  <div class="topbar">
+    <h1>Darul Uloom Noorul Islam</h1>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="courses.html">Courses</a></li>
+      <li><a href="admission.html" class="active">Admission</a></li>
+      <li><a href="donation.html">Donation</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+  <!-- Page Title -->
+  <section class="hero">
+    <h1>Online Donation</h1>
+    <p>Your contribution helps sustain Islamic education and services.</p>
+  </section>
+
+  <!-- Donation Info -->
+  <section class="donation-section">
+    <h2>Bank Account Details</h2>
+    <table class="bank-table">
+      <tr>
+        <td><strong>Bank Name</strong></td>
+        <td><span id="bankName">SBI Bank</span></td>
+      </tr>
+      <tr>
+        <td><strong>Account Name</strong></td>
+        <td><span id="accountName">NOOR EDUCATION SOCIETY<br> DARUL ULOOM NOORUL ISLAM</span></td>
+      </tr>
+      <tr>
+        <td><strong>Account Number</strong></td>
+        <td>
+          <span id="accountNumber">62129695597</span>
+          <button class="copy-btn" onclick="copyText('accountNumber')">Copy</button>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>IFSC Code</strong></td>
+        <td>
+          <span id="ifsc">SBIN0020812</span>
+          <button class="copy-btn" onclick="copyText('ifsc')">Copy</button>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Branch</strong></td>
+        <td><span id="branch">SBI Old Bowenpallay, Secunderabad</span></td>
+      </tr>
+    </table>
+
+    <h3>Pay via UPI</h3>
+    <img src="qr.png" alt="UPI QR Code" class="qr-code" id="qrCode" />
+
+    <!-- 🔥 New Payment Icons Section -->
+    <div class="payment-icons">
+      <img src="images/paytm.png" alt="Paytm" class="upi-icon" />
+      <img src="images/gpay.png" alt="Google Pay" class="upi-icon" />
+      <img src="images/phonepe.png" alt="PhonePe" class="upi-icon" />
+    </div>
+
+    <!-- ✅ Donate Button -->
+    <button class="donate-btn" onclick="handleDonate()">Donate Now</button>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Email: darululoomnoorulislam@gmail.com | Phone: +91-9849506791</p>
+    <p>© 2025 darululoomnoorulislam.in – All rights reserved</p>
+  </footer>
+
+  <!-- ✅ Scripts -->
+  <script>
+    function copyText(id) {
+      const text = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        alert(`Copied: ${text}`);
+      });
+    }
+
+    function isMobileDevice() {
+      return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    }
+
+    function handleDonate() {
+      const upiLink = "upi://pay?pa=amjadsyed824@okhdfcbank&pn=Darul%20Uloom%20Noorul%20Islam&cu=INR";
+
+      if (isMobileDevice()) {
+        window.location.href = upiLink;
+      } else {
+        document.getElementById("qrCode").style.display = "block";
+        window.scrollTo({
+          top: document.getElementById("qrCode").offsetTop - 100,
+          behavior: 'smooth'
+        });
+      }
+    }
+  </script>
+
+</body>
+</html>
