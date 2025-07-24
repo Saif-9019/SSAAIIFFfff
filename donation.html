@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -65,30 +65,47 @@
       font-size: 12px;
       margin-left: 10px;
     }
+
+    /* 🔥 New Styles for Payment Icons */
+    .payment-icons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+      margin-bottom: 15px;
+      flex-wrap: wrap;
+    }
+
+    .upi-icon {
+      width: 60px;
+      height: auto;
+      transition: transform 0.2s ease;
+    }
+
+    .upi-icon:hover {
+      transform: scale(1.1);
+    }
   </style>
 </head>
-
 <body>
-
-  <!-- Header -->
-  <header class="site-header">
-    <div class="top-bar"></div>
-    <div class="main-nav">
-      <img src="logo.png" alt="logo" class="logo" />
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="donation.html" class="active">Donation</a></li>
-          <li><a href="news.html">News</a></li>
-          <li><a href="admission.html">Admission</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
+  <header>
+  <div class="topbar">
+    <h1>Darul Uloom Noorul Islam</h1>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="courses.html">Courses</a></li>
+      <li><a href="admission.html" class="active">Admission</a></li>
+      <li><a href="donation.html">Donation</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
   <!-- Page Title -->
-  <section class="page-title">
+  <section class="hero">
     <h1>Online Donation</h1>
     <p>Your contribution helps sustain Islamic education and services.</p>
   </section>
@@ -125,8 +142,15 @@
       </tr>
     </table>
 
-    <h3>Scan & Pay via UPI</h3>
+    <h3>Pay via UPI</h3>
     <img src="qr.png" alt="UPI QR Code" class="qr-code" id="qrCode" />
+
+    <!-- 🔥 New Payment Icons Section -->
+    <div class="payment-icons">
+      <img src="images/paytm.png" alt="Paytm" class="upi-icon" />
+      <img src="images/gpay.png" alt="Google Pay" class="upi-icon" />
+      <img src="images/phonepe.png" alt="PhonePe" class="upi-icon" />
+    </div>
 
     <!-- ✅ Donate Button -->
     <button class="donate-btn" onclick="handleDonate()">Donate Now</button>
